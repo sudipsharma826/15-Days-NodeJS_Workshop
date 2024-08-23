@@ -22,7 +22,7 @@ module.exports={
     HOST: process.env.HOST,
     USER: process.env.USERNAME2,
     PASSWORD: process.env.PASSWORD,
-    DB: process.env.NAME,
+    DB: process.env.DATABASE,
     dialect: "mysql",
     PORT: 3306,
     pool:
