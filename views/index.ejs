@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="home.css"><!--External CSS Linking-->
+    
+    <!--The Home .css was not acess directly ,we run a commag to get the acess amually
+    app.use(express.static('public'));
+    or
+    app.use(express.static('public\css'))(More secure)
+    here in the href we didnot gave the full lcoation but it is acessable:
+    this is because the app.use() get the location ,so we donnot use it.
+    Only file name is enough.-->
+</head>
+<body>
+    <h1>Hello World from the get.render</h1>
+    
+    <!-- 
+    <h1>1 + 1</h1> 
+    To get the sum in normal HTML, we would typically use JavaScript with DOM manipulation. 
+    But EJS is like HTML + dynamic content. 
+    We can do it by using the EJS tag <%= 1 + 1 %>. 
+    -->
+    
+    <h1><%= 1 + 1 %></h1>
+    <h1><%- obj1.name %></h1>
+    <!-- Output Would be: Sudip Sharma -->
+</body>
+</html>
