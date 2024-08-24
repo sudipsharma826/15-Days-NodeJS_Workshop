@@ -23,23 +23,23 @@ require('./model/index.js');
 // Setting up EJS as the view engine for rendering templates.
 app.set('view engine', 'ejs');
 
-// Example route to render 'index.ejs' and pass data to it.
-// app.get('/', (req, res) => {
-//     const data = {
-//         name: 'Sudip Sharma',
-//         age: 20,
-//         city: 'Pokhara'
-//     };
-//     res.render('index.ejs', { obj1: data });
-// });
+//Example route to render 'index.ejs' and pass data to it.
+app.get('/home', (req, res) => {
+    const data = {
+        name: 'Sudip Sharma',
+        age: 20,
+        city: 'Pokhara'
+    };
+    res.render('index.ejs', { obj1: data });
+});
 
-// Example route to render 'about.ejs' when accessing /about.
-// app.get('/about', (req, res) => {
-//     res.render('about.ejs');
-// });
+//Example route to render 'about.ejs' when accessing /about.
+app.get('/about', (req, res) => {
+    res.render('about.ejs');
+});
 
 // Serving static files (e.g., CSS, images) from the 'public' directory.
-app.use(express.static('public'));
+app.use(express.static('public/css'));
 
 // Middleware to parse URL-encoded data from forms.
 // This allows Node.js to understand form data.
@@ -52,7 +52,7 @@ app.get('/create', (req, res) => {
 
 // Route to render the 'index.ejs' template as the home page.
 app.get('/', (req, res) => {
-    res.render('index.ejs');
+    res.render('home.ejs');
 });
 
 // Route to handle form submissions for creating a new blog post.

@@ -48,7 +48,7 @@ db.blogs=makeBlogTable(sequelize,DataTypes);
 //const makeBlogTable = require('./blogModel.js');
 //this solve the problem
 
-db.sequelize.sync({force:true})
+db.sequelize.sync({force:false})
 .then (()=>{
     console.log('Database is synchronized');
 })

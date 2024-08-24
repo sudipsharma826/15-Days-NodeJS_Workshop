@@ -4,18 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="home.css"><!--External CSS Linking-->
+    <link rel="stylesheet" href="home.css"><!-- External CSS Linking -->
     
-    <!--The Home .css was not acess directly ,we run a commag to get the acess amually
-    app.use(express.static('public'));
-    or
-    app.use(express.static('public\css'))(More secure)
-    here in the href we didnot gave the full lcoation but it is acessable:
-    this is because the app.use() get the location ,so we donnot use it.
-    Only file name is enough.-->
+    <!-- The home.css file is not directly accessible by default. 
+    To make it accessible, we need to serve the static files using Express:
+    app.use(express.static('public')); 
+    or 
+    app.use(express.static('public/css')); // This is more secure.
+    
+    In the href attribute, we didn't provide the full path, but it's still accessible because
+    app.use() handles the location, so only the filename is needed here. -->
 </head>
 <body>
-     <h1>Welcome to the Content Mangement System</h1>
-     <a href="/create">Create Blog</a>
+     <h1>Welcome to the Index Page</h1>
+     <%= obj1.name %> <!-- Embedded JavaScript to render dynamic content -->
 </body>
 </html>
