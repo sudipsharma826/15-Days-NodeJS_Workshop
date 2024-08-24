@@ -6,6 +6,7 @@ const {Sequelize, DataTypes} = require('sequelize');
 //lets follow the MVC model ,firslty create a config folder and create a file name dbconfig.js
 //after creating the dbconfig.js file we need to import the file in the index.js file
 const databaseConfig=require('../config/dbconfig.js');//we import all the data from the dbconfig.js file to the varaible dbConfig and now it the object that stores all the inforamtion about the configuration
+const makeBlogTable = require('./blogModel.js');
 // const sequelize= new Sequelize("sudip","root","",{
 //     //Donnot be confused the sequelize is the varalbe name.It also the convention to use the sequelize as the variable name
 //     host:'localhost',
@@ -38,8 +39,16 @@ sequelize.authenticate()//here auto the username and the password is passed
 const db={};//we created the empty object,now we need to add the key in the object
 db.Sequelize=Sequelize;
 db.sequelize=sequelize;
+//Connecting the file that create the table in the database the file name is :blogmodel.js
+//const blogs=require('./blogModel.js')(sequelize,DataTypes);
+//to make this more clear we can do it by:
+db.blogs=makeBlogTable(sequelize,DataTypes);
+//makeBlogTable is the function that is exported from the blogModel.js file
+//and writing this a line was auto added :
+//const makeBlogTable = require('./blogModel.js');
+//this solve the problem
 
-db.sequelize.sync({force:false})
+db.sequelize.sync({force:true})
 .then (()=>{
     console.log('Database is synchronized');
 })
@@ -48,7 +57,7 @@ db.sequelize.sync({force:false})
 });
 
 //Connecting the file that create the table in the database the file name is :blogmodel.js
-const blogs=require('./blogModel.js')(sequelize,DataTypes);
+//const blogs=require('./blogModel.js')(sequelize,DataTypes);
 
 
 

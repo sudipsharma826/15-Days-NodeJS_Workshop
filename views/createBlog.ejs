@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Design</title>
+    <link rel="stylesheet" href="createBlog.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1 class="form-title">Hi, Post Your Blog</h1>
+        <form class="form" action="/create" method="post">
+            <label for="title" class="form-label">Title:</label>
+            <input type="text" id="title" name="title" class="form-input" placeholder="Enter the title" required>
+
+            <label for="subtitle" class="form-label">Subtitle:</label>
+            <input type="text" id="subtitle" name="subtitle" class="form-input" placeholder="Enter the subtitle" required>
+
+            <label for="description" class="form-label">Description:</label>
+            <textarea id="description" name="description" class="form-textarea" placeholder="Enter the description" required></textarea>
+
+            <label for="image" class="form-label">Image Upload:</label>
+            <input type="file" id="image" name="image" class="form-input" accept="image/*">
+
+            <button type="submit" class="form-button">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
