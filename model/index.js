@@ -17,12 +17,12 @@ const sequelize= new Sequelize(databaseConfig.DB,databaseConfig.USER,databaseCon
     host:databaseConfig.HOST,
     port:databaseConfig.PORT,
     dialect:databaseConfig.dialect,
-    pool:{//explained in the day 7 daily notes
-        max:databaseConfig.pool.max,//we use two dot operator ( first to acess the keys from the dbConfig object and inside the key access (e,g pool) there is again and object ) and from that pool object to access the key again a dot operator is used.
-        min:databaseConfig.pool.min,
-        acquire:databaseConfig.pool.acquire,
-        idle:databaseConfig.pool.idle
-    }
+    // pool:{//explained in the day 7 daily notes
+    //     max:databaseConfig.pool.max,//we use two dot operator ( first to acess the keys from the dbConfig object and inside the key access (e,g pool) there is again and object ) and from that pool object to access the key again a dot operator is used.
+    //     min:databaseConfig.pool.min,
+    //     acquire:databaseConfig.pool.acquire,
+    //     idle:databaseConfig.pool.idle
+    // }
 });
 //now we have to check the connection
 //first the username and the password is to be checked

@@ -1,3 +1,4 @@
+require('dotenv').config();//this is the method to import the env file
 const express= require('express');//requesting the express package
 const app=express();
 // in short ( of line 1 and 2) you can direclty write as : const app=require('express')();
@@ -7,7 +8,6 @@ const app=express();
 //to import the index js to run out then the app js is executed
 require('./model/index.js');//to run the index.js file when the app.js run out
 //improting the env file (for the security purpose)
-require('dotenv').config();//this is the method to import the env file
 
 //using the ejs
 //install ejs by using the command npm install ejs
