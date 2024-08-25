@@ -20,6 +20,12 @@ const app = express(); // Creating an Express application instance.
 // Importing the index.js file to ensure the models are loaded when app.js is executed.
 require('./model/index.js');
 
+//Importing the multer and the storage from the multerConfig.js file.
+const { multer, storage } = require('./middleware/multerConfig.js');
+const upload = multer({ storage });
+//it means when upload is used it call multer and then only multer call the storage
+////now ,uplaod is used to handle or accept the file from the user
+
 // Setting up EJS as the view engine for rendering templates.
 app.set('view engine', 'ejs');
 
@@ -56,18 +62,23 @@ app.get('/', (req, res) => {
 });
 
 // Route to handle form submissions for creating a new blog post.
-app.post('/create', async (req, res) => {
+app.post('/create', upload.single('image'), async (req, res) => {
     // Destructure the form data from the request body.
-    const { title, subtitle, description, image } = req.body;
+    const { title, subtitle, description } = req.body;
+    // Check if the file is received correctly.
+    console.log(req.file);
+    
 
     // Attempt to create a new blog entry in the database.
         await blogs.create({
             title,
             subtitle,
             description,
-            image
+            //image : req.file.filename
+            image: req.file.path
         });
-        res.send('Data Added In Database');
+        res.redirect('/'); //refirect to home page after the sucess
+       
 });
 
 // Serve only CSS files from the 'public/css' directory.
