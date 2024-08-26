@@ -18,3 +18,8 @@ By the end of this workshop, we'll have hands-on experience with Node.js and a c
 I've also posted detailed blog articles about each day's learning on my website. Check them out here: [Node.js Blog Articles](https://www.sudipsharma.com.np/search/label/Node%20Js).
 
 Feel free to share your feedback or reach out to me at [info@sudipsharma.com.np](mailto:info@sudipsharma.com.np). I'd love to hear from you!
+
+
+
+Follow Me on Linkedin:[Sudip Sharma On Linkedin]
+(https://www.linkedin.com/in/sudipsharmanp/)
