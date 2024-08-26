@@ -20,6 +20,5 @@ I've also posted detailed blog articles about each day's learning on my website.
 Feel free to share your feedback or reach out to me at [info@sudipsharma.com.np](mailto:info@sudipsharma.com.np). I'd love to hear from you!
 
 
-
-Follow Me on Linkedin:[Sudip Sharma On Linkedin]
-(https://www.linkedin.com/in/sudipsharmanp/)
+Follow Me on Linkedin:
+[Sudip Sharma On Linkedin](https://www.linkedin.com/in/sudipsharmanp/)
