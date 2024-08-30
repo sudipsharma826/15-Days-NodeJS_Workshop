@@ -29,6 +29,14 @@ const upload = multer({ storage });
 // Setting up EJS as the view engine for rendering templates.
 app.set('view engine', 'ejs');
 
+// Route to render the 'index.ejs' template as the home page.
+app.get('/', async(req, res) => {
+    //to get the data from the datbase
+   const datas=await blogs.findAll();//in raw this is SELECT * FROM blogs;
+    res.render('home.ejs',{blogs:datas});//this passing the data form the database to the home.ejs
+    console.log(datas);//data will only console if you referesh the page e.g localhost:3000
+});
+
 //Example route to render 'index.ejs' and pass data to it.
 app.get('/home', (req, res) => {
     const data = {
@@ -46,6 +54,8 @@ app.get('/about', (req, res) => {
 
 // Serving static files (e.g., CSS, images) from the 'public' directory.
 app.use(express.static('public/css'));
+//To public the image
+app.use(express.static('public/images'));
 
 // Middleware to parse URL-encoded data from forms.
 // This allows Node.js to understand form data.
@@ -56,17 +66,14 @@ app.get('/create', (req, res) => {
     res.render('createBlog.ejs');
 });
 
-// Route to render the 'index.ejs' template as the home page.
-app.get('/', (req, res) => {
-    res.render('home.ejs');
-});
+
 
 // Route to handle form submissions for creating a new blog post.
 app.post('/create', upload.single('image'), async (req, res) => {
     // Destructure the form data from the request body.
     const { title, subtitle, description } = req.body;
     // Check if the file is received correctly.
-    console.log(req.file);
+    //console.log(req.file);
     
 
     // Attempt to create a new blog entry in the database.
@@ -74,12 +81,14 @@ app.post('/create', upload.single('image'), async (req, res) => {
             title,
             subtitle,
             description,
-            //image : req.file.filename
-            image: req.file.path
+            image : req.file.filename
+           // image: req.file.path
         });
         res.redirect('/'); //refirect to home page after the sucess
        
 });
+
+//to get the data from the datbase
 
 // Serve only CSS files from the 'public/css' directory.
 app.use(express.static('public/css'));

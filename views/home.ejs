@@ -3,11 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="home.css"><!--External CSS Linking-->
+    <title>Home Page</title>
+    <link rel="stylesheet" href="home.css">
 </head>
 <body>
-     <h1>Welcome to the Content Mangement System</h1>
-     <a href="/create">Create Blog</a>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">My Website</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Card Section -->
+    <div class="card-container">
+        <% if(blogs.length > 0) { %>
+            <% blogs.forEach(blog => { %>
+                <div class="card">
+                    <img src="/images/<%= blog.image %>" alt="<%= blog.title %>">
+                    <div class="card-title"><%= blog.title %></div>
+                    <div class="card-subtitle"><%= blog.subtitle %></div>
+                    <div class="card-description"><%= blog.description %></div>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p>No blogs available at the moment.</p>
+        <% } %>
+        <!-- Loop through blogs and create a card for each one -->
+    </div>
 </body>
 </html>
