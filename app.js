@@ -88,10 +88,6 @@ app.post('/create', upload.single('image'), async (req, res) => {
        
 });
 
-//to get the data from the datbase
-
-// Serve only CSS files from the 'public/css' directory.
-app.use(express.static('public/css'));
 
 // Start the server on port 3000.
 app.listen(3000, () => {
