@@ -9,12 +9,12 @@
 <body>
     <!-- Navbar -->
     <nav class="navbar">
-        <div class="logo">My Website</div>
+        <div class="logo">Sudip Sharma Blog</div>
         <ul class="nav-links">
             <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="/create">Create Blog</a></li>
+            <!-- <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li> -->
         </ul>
     </nav>
 
@@ -27,13 +27,14 @@
                     <div class="card-title"><%= blog.title %></div>
                     <div class="card-subtitle"><%= blog.subtitle %></div>
                     <div class="card-description"><%= blog.description %></div>
+                    <div class="read-more-btn">
+                        <a href="/blog/<%= blog.id%>">Read More</a>
+                    </div>
                 </div>
             <% }) %>
         <% } else { %>
             <p>No blogs available at the moment.</p>
         <% } %>
     </div>
-    
-    <a href="/create" class="create-blog">Create a Blog</a>
 </body>
 </html>

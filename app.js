@@ -53,9 +53,12 @@ app.get('/about', (req, res) => {
 });
 
 // Serving static files (e.g., CSS, images) from the 'public' directory.
-app.use(express.static('public/css'));
+app.use(express.static('public/css/'));
 //To public the image
 app.use(express.static('public/images'));
+
+// //To make all public files available
+ app.use(express.static('public'));
 
 // Middleware to parse URL-encoded data from forms.
 // This allows Node.js to understand form data.
@@ -86,6 +89,25 @@ app.post('/create', upload.single('image'), async (req, res) => {
         });
         res.redirect('/'); //refirect to home page after the sucess
        
+});
+
+// To show the single page blog
+app.get('/blog/:id', async(req, res) => {
+    const blogId = req.params.id;  // Get the blog ID from the URL.
+    const blog = await blogs.findByPk(blogId);
+    res.render('singleBlog.ejs', { blog : blog });
+});
+
+
+//To delete the blog
+app.get('/delete/:id', async(req, res) => {
+    const blogId = req.params.id;//To get the id of the blog
+    await blogs.destroy({
+        where: {
+            id: blogId
+        }
+    });
+    res.redirect('/');
 });
 
 
