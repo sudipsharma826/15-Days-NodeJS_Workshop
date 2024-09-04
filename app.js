@@ -1,8 +1,8 @@
 require('dotenv').config(); // This imports the .env file to access environment variables.
 const express = require('express'); // Importing the Express package.
 const app = express(); // Creating an Express application instance.
-
- const { blogs } = require('./model/index.js'); // Importing the 'blogs' model from the index.js file in the model folder.
+const bcrypt = require('bcrypt');//importing the bcrypt package to encrypt the password
+ const { blogs, registers } = require('./model/index.js'); // Importing the 'blogs' model from the index.js file in the model folder.
 
  // Check if the 'blogs' variable is imported correctly
  if (!blogs) {
@@ -110,6 +110,46 @@ app.get('/delete/:id', async(req, res) => {
     res.redirect('/');
 });
 
+//Register Form Rendering
+app.get("/register",(req,res)=>{
+    res.render("registerUser.ejs");
+})
+
+//Route to handle the user login data
+app.post("/register",async(req,res)=>{
+    const{username,email,password}= req.body;
+    await registers.create({
+        username,
+        email,
+        password : bcrypt.hashSync(password, 10)//value between 8-12
+ })
+ res.redirect('/login');   
+
+
+})
+app.get("/login",(req,res)=>{
+    res.render("loginUser.ejs");
+})
+//Route to handle the login data
+app.post("/login",async(req,res)=>{
+    const{username,password}= req.body;
+    console.log(req.body);
+    const user=await registers.findAll({
+        where:{
+            username:username
+        }
+    });
+    if(user.length==0){
+        res.send("User not found");
+    }else{
+        const result=bcrypt.compareSync(password,user[0].password);
+        if(result){
+            res.send("Login Sucessfull");
+        }else{
+            res.send("Password not matched");
+        }
+    }
+})
 
 // Start the server on port 3000.
 app.listen(3000, () => {

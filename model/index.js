@@ -7,6 +7,7 @@ const {Sequelize, DataTypes} = require('sequelize');
 //after creating the dbconfig.js file we need to import the file in the index.js file
 const databaseConfig=require('../config/dbconfig.js');//we import all the data from the dbconfig.js file to the varaible dbConfig and now it the object that stores all the inforamtion about the configuration
 const makeBlogTable = require('./blogModel.js');
+const makeRegisterTable = require('./registerTable.js');
 // const sequelize= new Sequelize("sudip","root","",{
 //     //Donnot be confused the sequelize is the varalbe name.It also the convention to use the sequelize as the variable name
 //     host:'localhost',
@@ -43,6 +44,7 @@ db.sequelize=sequelize;
 //const blogs=require('./blogModel.js')(sequelize,DataTypes);
 //to make this more clear we can do it by:
 db.blogs=makeBlogTable(sequelize,DataTypes);
+db.registers=makeRegisterTable(sequelize,DataTypes);
 //makeBlogTable is the function that is exported from the blogModel.js file
 //and writing this a line was auto added :
 //const makeBlogTable = require('./blogModel.js');
