@@ -9,7 +9,7 @@ In this workshop, we're diving deep into Node.js with a project-based approach. 
 
 - **Day 1-5:** Setting up Node.js, understanding the basics, and starting our CMS project.
 - **Day 6-10:** Working with databases, implementing CRUD operations, and connecting our CMS to a database.
-- **Day 11-15:** Enhancing our CMS with additional features, handling user input, and deploying our project.
+- **Day 11-15:** Enhancing our CMS with additional features, handling user input, user registration and authentication and  deploying our project.
 
 By the end of this workshop, we'll have hands-on experience with Node.js and a completed project to showcase our skills. Let's code and learn together! 💻
 
