@@ -7,20 +7,27 @@
     <link rel="stylesheet" href="home.css">
 </head>
 <body>
-    <!-- Navbar -->
+    <!-- Navbar Code:
+    This code is removed from here to avoid repetition and improve reusability across multiple pages.
+    Instead, it will be imported from an external file 'navbar.ejs'.
+
+    Example Navbar Code (hidden):
     <nav class="navbar">
         <div class="logo">Sudip Sharma Blog</div>
         <ul class="nav-links">
             <li><a href="#">Home</a></li>
             <li><a href="/create">Create Blog</a></li>
-            <!-- <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li> -->
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
         </ul>
-    </nav>
+    </nav> -->
+
+    <!-- Importing the Navbar -->
+    <%- include ('./navbar.ejs') %>
 
     <!-- Card Section -->
     <div class="card-container">
-        <% if(blogs.length > 0) { %>
+        <% if(blogs && blogs.length > 0) { %>
             <% blogs.forEach(blog => { %>
                 <div class="card">
                     <img src="<%= blog.image %>" alt="<%= blog.title %>">
@@ -28,7 +35,7 @@
                     <div class="card-subtitle"><%= blog.subtitle %></div>
                     <div class="card-description"><%= blog.description %></div>
                     <div class="read-more-btn">
-                        <a href="/blog/<%= blog.id%>">Read More</a>
+                        <a href="/blog/<%= blog.id %>">Read More</a>
                     </div>
                 </div>
             <% }) %>

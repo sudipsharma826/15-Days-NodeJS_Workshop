@@ -4,3 +4,5 @@ package.json
 dailynotes.js
 .env
 public/images/
+controller/
+routes/
