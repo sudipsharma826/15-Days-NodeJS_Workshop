@@ -6,7 +6,7 @@ const {Sequelize, DataTypes} = require('sequelize');
 //lets follow the MVC model ,firslty create a config folder and create a file name dbconfig.js
 //after creating the dbconfig.js file we need to import the file in the index.js file
 const databaseConfig=require('../config/dbconfig.js');//we import all the data from the dbconfig.js file to the varaible dbConfig and now it the object that stores all the inforamtion about the configuration
-const makeBlogTable = require('./blogModel.js');
+const makeBlogTable = require('./blogmodel.js');
 const makeRegisterTable = require('./registerTable.js');
 // const sequelize= new Sequelize("sudip","root","",{
 //     //Donnot be confused the sequelize is the varalbe name.It also the convention to use the sequelize as the variable name
