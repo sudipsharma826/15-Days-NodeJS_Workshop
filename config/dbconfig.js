@@ -27,10 +27,10 @@ module.exports = {
     // Using environment variables for configuration:
     HOST: process.env.DB_HOST,       // The database host
     USER: process.env.DB_USER,       // The database user
-    PASSWORD: process.env.DB_PASSWORD || '', // The database password (empty if not used)
+    PASSWORD: process.env.DB_PASSWORD, // The database password (empty if not used)
     DB: process.env.DB_NAME,         // The name of the database
     dialect: "mysql",               // The dialect (in this case, MySQL)
-    PORT: 3306  // The port to connect to the database (default for MySQL is 3306)
+    PORT: 3306 // The port to connect to the database (default for MySQL is 3306)
 
     // Optionally, you can include the connection pool settings as shown below:
     // pool: {
