@@ -6,6 +6,7 @@ const express = require('express');
 const bcrypt = require('bcrypt'); // For password hashing
 const { blogs, registers } = require('./model/index.js'); // Models
 const { multer, storage } = require('./middleware/multerConfig.js'); // Multer for file uploads
+const { where } = require('sequelize');
 const upload = multer({ storage });
 
 // Create an Express application instance
@@ -81,6 +82,40 @@ app.get('/delete/:id', async (req, res) => {
     await blogs.destroy({ where: { id: blogId } });
     res.redirect('/');
 });
+//Render the editBlog Page
+app.get('/edit/:id', async (req, res) => {
+    const blogId = req.params.id;//extreacting the id from the url
+    const blog = await blogs.findByPk(blogId)
+    console.log(blog);
+    res.render('editBlog.ejs', { blog });
+});
+app.post('/editBlog/:id', upload.single('image'), async (req, res) => {
+    const { title, subtitle, description } = req.body;
+    const blogId = req.params.id;
+
+    // Update the data
+    const updateData = {
+        title,
+        subtitle,
+        description,
+    };
+
+    // Add the image field if a new file is uploaded
+    if (req.file) {
+        updateData.image = req.file.filename;
+    }
+
+    // Update the blog entry
+    await blogs.update(updateData, {
+        where: { id: blogId }
+    });
+
+    // Redirect to the home page after successful update
+    res.redirect('/');
+});
+
+
+
 
 // Route to render user registration form
 app.get('/register', (req, res) => {

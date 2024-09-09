@@ -17,6 +17,7 @@
             <h2><%= blog.subtitle %></h2>
             <p><%= blog.description %></p>
         </div>
+        <a href="/edit/<%= blog.id %>" class="delete-button ">Edit</a>
         <a href="/delete/<%= blog.id %>" class="delete-button ">Delete</a>
     </div>
     <% } else { %>
